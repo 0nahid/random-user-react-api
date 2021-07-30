@@ -14,21 +14,22 @@ function App() {
 
 function Data() {
   const [data, setData] = useState([]);
-  useEffect(() =>
-    fetch('https://randomuser.me/api/')
-      .then((response) => response.json())
-      .then(data => setData(data))
-  )
+  useEffect(() => {
+    fetch("https://randomuser.me/api/")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data.results[0]);
+      });
+  }, []);
+  if (data.length < 1) {
+    return <h2>Loading </h2>;
+  }
   return (
     <div>
-      {data.map(data =>
-        <div>
-          <h1>{data.results[0].name.first}</h1>
-          <h1>{data.results.name.first}</h1>
-        </div>
-      )}
+      <h2>{data.name.first}</h2>
+      <h2>{data.name.last}</h2>
     </div>
-  )
+  );
 }
 
 function Users() {
@@ -41,7 +42,7 @@ function Users() {
   return (
     <div className="userContainer">
       <h1>Dynamic Users : {users.length} </h1>
-      {users.map(user  =>
+      {users.map(user =>
         <div className="userStyle">
           <h1>Name : {user.name} </h1>
           <h5>Mail : {user.email} </h5>
