@@ -22,7 +22,7 @@ function Data() {
       });
   }, []);
   if (data.length < 1) {
-    return <h2>Loading </h2>;
+    return <h2>Loading... </h2>;
   }
   return (
     <div className="userContainer">
