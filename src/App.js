@@ -5,6 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Me></Me>
         <Data></Data>
         <Users></Users>
       </header>
@@ -56,5 +57,10 @@ function Users() {
       )}
     </div>
   )
+}
+function Me() {
+  return (
+    <h1> Hello from Phone </h1>
+    )
 }
 export default App;
