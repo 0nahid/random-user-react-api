@@ -6,6 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Me></Me>
+        <UserList></UserList>
         <Data></Data>
         <Users></Users>
       </header>
@@ -32,7 +33,6 @@ function Data() {
         const { name } = person;
         return <div className="userStyle">
           <h2>Name: {name.first} {name.last}</h2>
-          
         </div>
       })}
     </div>
@@ -61,6 +61,27 @@ function Users() {
 function Me() {
   return (
     <h1> Hello from Phone </h1>
-    )
+  )
+}
+function UserList() {
+  const [userList, setUserList] = useState([]);
+  useEffect(() => {
+    fetch("https://randomuser.me/api/?results=50")
+      .then((res) => res.json())
+      .then((data) => {
+        setUserList(data.results);
+      });
+  }, []);
+  return (
+    <div>
+      <h1>Dynamic Users : {userList.length} </h1>
+      {userList.map(user => {
+        const { name } = user;
+        return <div className="userStyle">
+          <h2>Name: {name.first} {name.last}</h2>
+        </div>
+      })}
+    </div>
+  )
 }
 export default App;
