@@ -1,3 +1,6 @@
+body{
+  background:rgba(253, 193, 243, 0.7);
+}
 .userContainer{
   margin: auto;
   text-align:center;
