@@ -5,7 +5,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <People> </People>
         <Me></Me>
         <UserList></UserList>
         <Data></Data>
@@ -60,8 +59,23 @@ function Users() {
   )
 }
 function Me() {
+  const [myData, setMyData] = useState([]);
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(data => {
+        setMyData(data);
+      })
+  }, [])
   return (
-    <h1> Hello from Phone </h1>
+    <div style={{ margin: 'auto', width: '600px', borderRadius: '5px', padding: '40px' }}>
+      <h1>Dynamic Object Detected {myData.length}</h1>
+      {myData.map((myData) =>
+        <div style={{ padding: '3px', marginTop: '20px', borderRadius: '5px', boxShadow: '0 0 10px #aa32f0' }}>
+          <h1 style={{ padding: '5px' }}>Name : {myData.name} </h1>
+        </div>
+      )}
+    </div>
   )
 }
 function UserList() {
@@ -79,7 +93,7 @@ function UserList() {
       {userList.map(user => {
         const { name } = user;
         return <div className="userStyle">
-          <h2>Name: {name.first} {name.last}</h2>
+          <h2>Name: {name.first} {name.last} </h2>
         </div>
       })}
     </div>
