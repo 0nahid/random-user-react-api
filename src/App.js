@@ -42,19 +42,19 @@ function Data() {
 
 function Nahid() {
   const [nahid, setNahid] = useState([]);
-  useEffect(()=>{
+  useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(data => setNahid(data) )
-  },[])
+      .then(response => response.json())
+      .then(data => setNahid(data))
+  }, [])
   return (
-  <div>
-    Dynamic data {nahid.length}
-    {nahid.map( nahid => 
-    <h1> {nahid.name} </h1>
-    )}
-  </div>
-)
+    <div>
+      Dynamic data {nahid.length}
+      {nahid.map(nahid =>
+        <h1> {nahid.name} </h1>
+      )}
+    </div>
+  )
 }
 
 function Users() {
