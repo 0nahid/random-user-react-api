@@ -132,7 +132,7 @@ function Create() {
         {addUser.map(user => {
           const { name } = user;
           return (
-            <div className="userStyle">
+            <div className="userContainer">
               <h3>Name: {name.first} {name.last} </h3>
             </div>
           )
