@@ -5,6 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Create></Create>
         <Nahid></Nahid>
         <Me></Me>
         <UserList></UserList>
@@ -114,6 +115,29 @@ function UserList() {
           <h2>Name: {name.first} {name.last} </h2>
         </div>
       })}
+    </div>
+  )
+}
+function Create() {
+  const [addUser, setAddUser] = useState([]);
+  useEffect(() => {
+    fetch('https://randomuser.me/api/?results=50')
+      .then(response => response.json())
+      .then(data => setAddUser(data.results))
+  }, [])
+  return (
+    <div>
+      <h1>I've {addUser.length} Dynamic user data </h1>
+      <div>
+        {addUser.map(user => {
+          const { name } = user;
+          return (
+            <div className="userStyle">
+              <h3>Name: {name.first} {name.last} </h3>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
