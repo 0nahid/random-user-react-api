@@ -5,6 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Nahid></Nahid>
         <Me></Me>
         <UserList></UserList>
         <Data></Data>
@@ -37,6 +38,21 @@ function Data() {
       })}
     </div>
   );
+}
+
+function Nahid() {
+  const [nahid, setNahid] = useState([]);
+  useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(data => setNahid(data) )
+  },[])
+  return (
+  <div>
+    <h1>Hello Bro</h1>
+    Dynamic data {nahid.length}
+  </div>
+)
 }
 
 function Users() {
