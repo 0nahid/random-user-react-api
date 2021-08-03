@@ -49,8 +49,10 @@ function Nahid() {
   },[])
   return (
   <div>
-    <h1>Hello Bro</h1>
     Dynamic data {nahid.length}
+    {nahid.map( nahid => 
+    <h1> {nahid.name} </h1>
+    )}
   </div>
 )
 }
